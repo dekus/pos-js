@@ -16,9 +16,9 @@ var re = {
   email: /[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](?:\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](?:-?\.?[a-zA-Z0-9])*(?:\.[a-zA-Z](?:-?[a-zA-Z0-9])*)+/gi,
   urls: /(?:https?:\/\/)(?:[\da-z\.-]+)\.(?:[a-z\.]{2,6})(?:[\/\w\.\-\?#=]*)*\/?/ig,
   punctuation: /[\/\.\,\?\!\"\'\:\;\$\(\)\#]/ig
-}
+};
 
-function LexerNode(string, regex, regexs){
+function LexerNode(string, regex, regexs) {
   string = string.trim();
   this.string = string;
   this.children = [];
@@ -68,13 +68,13 @@ LexerNode.prototype.fillArray = function(array){
       }
     }
   }
-}
+};
 
 LexerNode.prototype.toString = function(){
   var array = [];
   this.fillArray(array);
   return array.toString();
-}
+};
 
 function Lexer(){
   // URLS can contain IDS, so first urls, then ids
@@ -86,10 +86,10 @@ function Lexer(){
 Lexer.prototype.lex = function(string){
   var array = []
     , node = new LexerNode(string, this.regexs[0], this.regexs.slice(1));
-  
+
   node.fillArray(array);
   return array;
-}
+};
 
 //var lexer = new Lexer();
 //print(lexer.lex("I made $5.60 today in 1 hour of work.  The E.M.T.'s were on time, but only barely.").toString());

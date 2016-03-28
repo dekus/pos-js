@@ -50,6 +50,7 @@ BrillTransformationRules.prototype.getRules = function() {
 
 /**
  * Indicates whether or not this string starts with the specified string.
+ * @param {Object} $this
  * @param {Object} string
  */
 function startsWith($this, string) {
@@ -141,6 +142,11 @@ function rule8(taggedSentence, index) {
   if (startsWith(taggedSentence[index][1], "NN") && endsWith(taggedSentence[index][0], "ing")) {
     taggedSentence[index][1] = "VBG";
   }
+}
+
+// rule 8: assemble several NNP into single tag
+function rule9(taggedSentence, index) {
+
 }
 
 module.exports = BrillTransformationRules;
